@@ -1,0 +1,7 @@
+version: "3"
+services:
+  celery-server:
+    image: imagen_de_celery
+
+  redis-db:
+    image: redis
