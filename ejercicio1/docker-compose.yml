@@ -1,11 +1,16 @@
+# Poner la directiva "version" en el archivo docker-compose.yml se considera obsoleto desde hace varias versiones. 
 version: '3'
 
 services:
+
+  # Nginx se podría utilizar para un entorno de producción, mas no para un entorno de desarrollo.
+  # Una mejor elección de imagen Docker podría haber sido la de Python.
   webserver:
     image: nginx:latest
     ports:
       - "80:80"
     volumes:
+      # Esta declaración de volumen indica que algún contenido estático será servido por el contenedor. No es el caso puesto que el ejercio no lo pide. 
       - ./html:/usr/share/nginx/html
     restart: always
 
@@ -15,5 +20,11 @@ services:
       - POSTGRES_USER=username
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=asj
+    
+    # Este volumen no está declarado. Ningun contenedor de éste ejercicio puede arrancar con un 'docker compose up'
     volumes:
       - nombre_del_volumen:/var/lib/postgresql/data
+
+
+# No existe el archivo Dockerfile para este ejercicio en donde se declararían las dependencias necesarias
+# para correr el sistema. Por otro lado, tampoco existe un archivo requirements.txt para este ejercicio. 
