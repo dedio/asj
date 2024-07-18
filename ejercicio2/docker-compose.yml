@@ -1,7 +1,10 @@
+# Poner la directiva "version" en el archivo docker-compose.yml se considera obsoleto desde hace varias versiones. 
 version: "3"
 services:
   celery-server:
-    image: imagen_de_celery
+    image: imagen_de_celery # No es una imagen de celery válida
 
   redis-db:
     image: redis
+
+# Al carecer de un Dockerfile y de un requirements.txt, estos contenedores no pueden ser iniciados.
